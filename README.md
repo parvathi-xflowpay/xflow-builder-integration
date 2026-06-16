@@ -1,10 +1,10 @@
 # xflow-builder-integration
 
-Minimal reproduction of the xflow-web Builder.io integration — basic setup only, no data binding or proxy layer.
+Minimal reproduction of the xflow-web Builder.io integration — basic setup only.
 
 ## Purpose
 
-Reproduces the core Builder.io integration (content fetching, preview mode, component registration) with minimal moving parts, for isolating issues unrelated to data binding.
+Reproduces the core Builder.io integration (content fetching, preview mode, component registration) with minimal moving parts, for isolating issues.
 
 ## Setup
 
