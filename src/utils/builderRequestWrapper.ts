@@ -1,6 +1,5 @@
 import { GetContentOptions } from '@builder.io/sdk';
 import http from './http';
-import { transformBuilderQueryResponse } from './transformBuilderQueryResponse';
 
 type IBuilderFetchOptionsProps = GetContentOptions & {
   /**
@@ -8,8 +7,6 @@ type IBuilderFetchOptionsProps = GetContentOptions & {
    * or only the first object from the list.
    */
   fetchAsList?: boolean;
-  customData?: Record<string, any>;
-  replaceFallback?: string;
 };
 const apiKey = process.env.NEXT_PUBLIC_BUILDERIO;
 const isDevelopment = process.env.NODE_ENV === 'development';
@@ -19,7 +16,7 @@ export const builderFetch = async (
   model,
   options: IBuilderFetchOptionsProps = {}
 ) => {
-  const { fetchAsList, customData, replaceFallback, ...restOptions } = options;
+  const { fetchAsList, ...restOptions } = options;
   const finalOptions = {
     cachebust: isPreviewEnabled || isDevelopment,
     includeUnpublished: isPreviewEnabled || isDevelopment,
@@ -56,12 +53,7 @@ export const builderFetch = async (
         }
       : { cache: 'no-cache' }
   );
-  const transformedContent = transformBuilderQueryResponse(
-    content,
-    customData,
-    replaceFallback
-  );
   return fetchAsList
-    ? transformedContent
-    : (transformedContent as { results: any[] })?.results?.[0];
+    ? content
+    : (content as { results: any[] })?.results?.[0];
 };
