@@ -17,9 +17,10 @@ export default async function Page(props: Props) {
     userAttributes: { urlPath },
   });
 
-  if (!content) {
+  const isPreview = process.env.NEXT_PUBLIC_PREVIEW_MODE === 'true';
+  if (!content && !isPreview) {
     return notFound();
   }
 
-  return <RenderBuilderContent content={content} model="tools" />;
+  return <RenderBuilderContent content={content ?? null} model="tools" />;
 }

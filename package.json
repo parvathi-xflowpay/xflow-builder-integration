@@ -9,8 +9,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@builder.io/react": "^3.2.9",
-    "@builder.io/sdk": "^2.2.4",
+    "@builder.io/react": "^9.4.0",
+    "@builder.io/sdk": "^6.3.0",
     "clsx": "^2.1.1",
     "lodash": "^4.17.21",
     "next": "^16.2.6",

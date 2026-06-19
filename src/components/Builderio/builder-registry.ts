@@ -1,4 +1,7 @@
-import { Builder } from '@builder.io/react';
+import { Builder, builder } from '@builder.io/react';
+
+builder.init(process.env.NEXT_PUBLIC_BUILDERIO!);
+
 import SimpleHero from '@components/demo/SimpleHero';
 import CardList from '@components/demo/CardList';
 import FaqBlock from '@components/demo/FaqBlock';

@@ -22,7 +22,7 @@ export const builderFetch = async (
     includeUnpublished: isPreviewEnabled || isDevelopment,
     preview: isPreviewEnabled,
     cacheSeconds: 0,
-    enrich: true,
+    enrich: false,
     apiKey,
     ...restOptions,
   };
@@ -37,7 +37,7 @@ export const builderFetch = async (
         return queryString + buildQuery(value, fullKey);
       }
 
-      return queryString + `${fullKey}=${value}&`;
+      return queryString + `${encodeURIComponent(fullKey)}=${encodeURIComponent(value)}&`;
     }, '');
   };
 
